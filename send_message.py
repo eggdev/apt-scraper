@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 import requests
 from datetime import date
-
-url = "https://hooks.slack.com/services/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"
+from url import url
 
 headers = {"content-type": "application/json"}
 
