@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 import requests
-from datetime import date
+from datetime import date, datetime, timedelta
 from url import url
 
 headers = {"content-type": "application/json"}
+
+sixtydays = datetime.now() + timedelta(60)
 
 
 def calculate_average(prices):
@@ -22,6 +24,10 @@ def send_message(units):
                 "text": f"Apartment Prices: {date.today()}",
                 "emoji": False,
             },
+        },
+        {
+            "type": "section",
+            "text": {"type": "plain_text", "text": f"60 Days: {sixtydays}"},
         },
     ]
     for u in units:
