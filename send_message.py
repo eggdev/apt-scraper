@@ -47,7 +47,7 @@ def send_message(units):
                     },
                 }
             )
-        else:
+        elif len(units[u]["prices"]) < 1:
             blocks.append({"type": "divider"})
             current_unit = units[u]
             unit_prices = current_unit["prices"][-1]
