@@ -30,7 +30,7 @@ def run(apt):
     try:
         title = apt.select(".title")[0].contents[0]
         unit_number = title[-4:]
-        if unit_number != "able" and unit_number[1] == "4":
+        if unit_number != "able":
             price_container = apt.select(".price")[0]
             price = price_container.select(".brand-main-text-color")
             print_price = price[0].contents[0]

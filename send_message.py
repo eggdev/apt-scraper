@@ -31,21 +31,37 @@ def send_message(units):
         },
     ]
     for u in units:
-        blocks.append({"type": "divider"})
-        current_unit = units[u]
-        unit_prices = current_unit["prices"][-1]
-        todays_price = unit_prices["print_price"]
-        average_unit_price = calculate_average(current_unit["prices"])
-        text = f"Unit {u}: {todays_price}\n Average Price: {average_unit_price}"
-        blocks.append(
-            {
-                "type": "section",
-                "text": {
-                    "type": "plain_text",
-                    "text": text,
-                },
-            }
-        )
+        if u[1] == "4":
+            blocks.append({"type": "divider"})
+            current_unit = units[u]
+            unit_prices = current_unit["prices"][-1]
+            todays_price = unit_prices["print_price"]
+            average_unit_price = calculate_average(current_unit["prices"])
+            text = f"Unit {u}: {todays_price}\n Average Price: {average_unit_price}"
+            blocks.append(
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "plain_text",
+                        "text": text,
+                    },
+                }
+            )
+        else:
+            blocks.append({"type": "divider"})
+            current_unit = units[u]
+            unit_prices = current_unit["prices"][-1]
+            todays_price = unit_prices["print_price"]
+            text = f"New Unit {u}: {todays_price}"
+            blocks.append(
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "plain_text",
+                        "text": text,
+                    },
+                }
+            )
 
     payload = {"blocks": blocks}
     requests.post(url, headers=headers, json=payload)
